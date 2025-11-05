@@ -1,0 +1,678 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Purvi Roadlines - Freight & Truck Brokerage</title>
+    
+    <!-- Load Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Load Inter Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap" rel="stylesheet">
+
+    <style>
+        /* Base font */
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+
+        /* Page navigation system */
+        .page-section {
+            display: none; /* Hide all pages by default */
+        }
+        .page-section.active {
+            display: block; /* Show only the active page */
+        }
+
+        /* Custom Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes pulse-custom {
+            0%, 100% {
+                opacity: 1;
+                transform: scale(1);
+            }
+            50% {
+                opacity: .9;
+                transform: scale(1.05);
+            }
+        }
+
+        /* Animation classes */
+        .animate-fadeInUp {
+            animation: fadeInUp 1s ease-out forwards;
+        }
+        
+        .animate-pulse-custom {
+            animation: pulse-custom 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+        }
+
+        /* Scroll-triggered animations */
+        .reveal-on-scroll {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+        
+        .reveal-on-scroll.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body class="bg-gray-50 min-h-screen flex flex-col">
+
+    <!-- 
+      HEADER / NAVIGATION 
+      This is a sticky header that stays at the top.
+      The navigation links (e.g., #about) are used by JavaScript to show/hide the correct page section.
+    -->
+    <header class="bg-white shadow-md sticky top-0 z-50">
+        <nav class="container mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center">
+            <!-- Logo -->
+            <a href="#home" class="nav-link text-3xl font-extrabold text-blue-700">
+                Purvi <span class="text-orange-500">Roadlines</span>
+            </a>
+
+            <!-- Desktop Nav -->
+            <div class="hidden md:flex space-x-8 items-center">
+                <a href="#home" class="nav-link text-gray-700 hover:text-blue-700 font-medium transition duration-300">Home</a>
+                <a href="#about" class="nav-link text-gray-700 hover:text-blue-700 font-medium transition duration-300">About Us</a>
+                <a href="#services" class="nav-link text-gray-700 hover:text-blue-700 font-medium transition duration-300">Our Services</a>
+                <a href="#contact" class="nav-link bg-orange-500 text-white px-5 py-2 rounded-full font-medium hover:bg-orange-600 transition duration-300 shadow-sm">
+                    Get a Quote
+                </a>
+            </div>
+
+            <!-- Mobile Nav Button -->
+            <div class="md:hidden">
+                <button id="mobile-menu-button" class="text-gray-700 focus:outline-none">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg>
+                </button>
+            </div>
+        </nav>
+
+        <!-- Mobile Menu (Hidden by default) -->
+        <div id="mobile-menu" class="md:hidden hidden bg-white border-t border-gray-200">
+            <a href="#home" class="nav-link-mobile block py-3 px-4 text-gray-700 hover:bg-gray-100">Home</a>
+            <a href="#about" class="nav-link-mobile block py-3 px-4 text-gray-700 hover:bg-gray-100">About Us</a>
+            <a href="#services" class="nav-link-mobile block py-3 px-4 text-gray-700 hover:bg-gray-100">Our Services</a>
+            <a href="#contact" class="nav-link-mobile block py-3 px-4 text-orange-500 font-medium hover:bg-gray-100">Get a Quote</a>
+        </div>
+    </header>
+
+    <!-- Main Content Area -->
+    <main class="flex-grow">
+
+        <!-- 
+          ============================================================
+          HOME PAGE SECTION (ID: #home)
+          ============================================================
+        -->
+        <section id="home" class="page-section active">
+            
+            <!-- Hero Section -->
+            <div class="relative bg-gray-800 text-white overflow-hidden">
+                <div class="absolute inset-0">
+                    <!-- Placeholder for a background image -->
+                    <img src="https://placehold.co/1920x1080/334155/94a3b8?text=Purvi+Roadlines" 
+                         alt="Highway with truck"
+                         class="w-full h-full object-cover opacity-30">
+                </div>
+                
+                <div class="relative container mx-auto px-4 sm:px-6 lg:px-8 py-24 md:py-32 lg:py-48 text-center">
+                    <h1 class="text-4xl sm:text-5xl md:text-7xl font-extrabold tracking-tight animate-fadeInUp" style="animation-delay: 0.2s;">
+                        Connecting India's Freight
+                    </h1>
+                    <h2 class="text-4xl sm:text-5xl md:text-7xl font-extrabold tracking-tight text-orange-400 animate-fadeInUp" style="animation-delay: 0.4s;">
+                        One Load at a Time.
+                    </h2>
+                    <p class="mt-6 max-w-2xl mx-auto text-lg md:text-xl text-gray-300 animate-fadeInUp" style="animation-delay: 0.6s;">
+                        Welcome to Purvi Roadlines, Kanpur's trusted freight broker. We connect your loads to reliable trucks and find loads for your trucks. Seamlessly, efficiently, all over India.
+                    </p>
+                    <a href="#contact" 
+                       class="nav-link mt-10 inline-block bg-orange-500 text-white px-10 py-4 rounded-full text-lg font-semibold hover:bg-orange-600 transition duration-300 shadow-lg animate-pulse-custom">
+                        Book Your Truck or Load Today
+                    </a>
+                </div>
+            </div>
+
+            <!-- Services Overview -->
+            <div class="py-16 md:py-24 bg-white">
+                <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+                        <div class="reveal-on-scroll">
+                            <h2 class="text-base font-semibold text-blue-600 uppercase tracking-wide">What We Do</h2>
+                            <h3 class="mt-2 text-3xl md:text-4xl font-extrabold text-gray-900 tracking-tight">A Smarter Brokerage System</h3>
+                            <p class="mt-4 text-lg text-gray-600">
+                                We are the bridge between businesses that need to ship goods and the truck owners who move them. Our mission is to make logistics simple, transparent, and reliable for everyone involved.
+                            </p>
+                            <div class="mt-10 space-y-8">
+                                <!-- Feature 1 -->
+                                <div class="flex items-start">
+                                    <div class="flex-shrink-0 h-12 w-12 rounded-full bg-blue-100 text-blue-700 flex items-center justify-center">
+                                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9 17a2 2 0 11-4 0 2 2 0 014 0zM19 17a2 2 0 11-4 0 2 2 0 014 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16V6a1 1 0 00-1-1H4a1 1 0 00-1 1v10h10m-4 0h6m-6-6h6m-6-4h6"></path></svg>
+                                    </div>
+                                    <div class="ml-4">
+                                        <h4 class="text-xl font-bold text-gray-900">For Freight Owners</h4>
+                                        <p class="mt-1 text-gray-600">Need to ship goods? Get access to our verified network of trucks. We offer competitive pricing, real-time tracking (coming soon!), and guaranteed on-time delivery.</p>
+                                    </div>
+                                </div>
+                                <!-- Feature 2 -->
+                                <div class="flex items-start">
+                                    <div class="flex-shrink-0 h-12 w-12 rounded-full bg-orange-100 text-orange-700 flex items-center justify-center">
+                                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 10h4.764a2 2 0 011.789 2.894l-3.5 7A2 2 0 0115.263 21H7.01a2 2 0 01-1.99-2.15l1.09-7.62A2 2 0 018.09 9.36V4a2 2 0 012-2h1a2 2 0 012 2v6z"></path></svg>
+                                    </div>
+                                    <div class="ml-4">
+                                        <h4 class="text-xl font-bold text-gray-900">For Truck Owners</h4>
+                                        <p class="mt-1 text-gray-600">Have a truck? Find consistent loads, get fair pay, and reduce your empty miles. We partner with you to grow your business and keep your wheels turning.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="reveal-on-scroll">
+                            <!-- Placeholder for an image -->
+                            <img src="https://placehold.co/600x450/e0f2fe/0c4a6e?text=Our+Logistics+Network" 
+                                 alt="Logistics network graphic"
+                                 class="rounded-lg shadow-xl w-full">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Why Choose Us -->
+            <div class="py-16 md:py-24 bg-gray-50">
+                <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+                    <div class="text-center">
+                        <h2 class="text-base font-semibold text-blue-600 uppercase tracking-wide">The Purvi Advantage</h2>
+                        <h3 class="mt-2 text-3xl md:text-4xl font-extrabold text-gray-900 tracking-tight">Why Partner With Us?</h3>
+                    </div>
+                    <div class="mt-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                        <!-- Feature 1 -->
+                        <div class="p-6 bg-white rounded-lg shadow-lg reveal-on-scroll">
+                            <div class="flex items-center justify-center h-12 w-12 rounded-full bg-blue-100 text-blue-700">
+                                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
+                            </div>
+                            <h4 class="mt-4 text-xl font-bold text-gray-900">Pan-India Network</h4>
+                            <p class="mt-2 text-gray-600">From Gurugram to Guwahati, our network spans the entire nation, ensuring your freight gets where it needs to go.</p>
+                        </div>
+                        <!-- Feature 2 -->
+                        <div class="p-6 bg-white rounded-lg shadow-lg reveal-on-scroll" style="animation-delay: 0.1s;">
+                            <div class="flex items-center justify-center h-12 w-12 rounded-full bg-blue-100 text-blue-700">
+                                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                            </div>
+                            <h4 class="mt-4 text-xl font-bold text-gray-900">Verified Partners</h4>
+                            <p class="mt-2 text-gray-600">We personally vet every truck owner and freight partner to ensure reliability, safety, and professionalism.</p>
+                        </div>
+                        <!-- Feature 3 -->
+                        <div class="p-6 bg-white rounded-lg shadow-lg reveal-on-scroll" style="animation-delay: 0.2s;">
+                            <div class="flex items-center justify-center h-12 w-12 rounded-full bg-blue-100 text-blue-700">
+                                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+                            </div>
+                            <h4 class="mt-4 text-xl font-bold text-gray-900">Fast & Easy Booking</h4>
+                            <p class="mt-2 text-gray-600">Our streamlined process (and this website!) makes booking a truck or finding a load faster than ever.</p>
+                        </div>
+                        <!-- Feature 4 -->
+                        <div class="p-6 bg-white rounded-lg shadow-lg reveal-on-scroll" style="animation-delay: 0.3s;">
+                            <div class="flex items-center justify-center h-12 w-12 rounded-full bg-blue-100 text-blue-700">
+                                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18.364 5.636l-3.536 3.536m0 5.656l3.536 3.536M9.172 9.172L5.636 5.636m3.536 9.192l-3.536 3.536M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-5 0a4 4 0 11-8 0 4 4 0 018 0z"></path></svg>
+                            </div>
+                            <h4 class="mt-4 text-xl font-bold text-gray-900">Kanpur-Local Support</h4>
+                            <p class="mt-2 text-gray-600">We're not a faceless corporation. We are based in Kanpur, and our local team is always here to help you.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </section>
+
+        <!-- 
+          ============================================================
+          ABOUT US PAGE SECTION (ID: #about)
+          ============================================================
+        -->
+        <section id="about" class="page-section py-16 md:py-24 bg-white">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center max-w-3xl mx-auto">
+                    <h2 class="text-base font-semibold text-blue-600 uppercase tracking-wide">About Purvi Roadlines</h2>
+                    <h3 class="mt-2 text-3xl md:text-5xl font-extrabold text-gray-900 tracking-tight">Our Journey. Your Trust.</h3>
+                    <p class="mt-4 text-xl text-gray-600">
+                        We are more than a brokerage. We are a team of logistics passionate about building a better transportation ecosystem, starting right here in Kanpur.
+                    </p>
+                </div>
+
+                <!-- Our Story -->
+                <div class="mt-16 md:mt-24 grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
+                    <div class="reveal-on-scroll">
+                        <img src="https://placehold.co/600x450/dbeafe/1e3a8a?text=Our+Kanpur+Office" 
+                             alt="Company founding graphic"
+                             class="rounded-lg shadow-xl w-full">
+                    </div>
+                    <div class="reveal-on-scroll">
+                        <h4 class="text-3xl font-extrabold text-gray-900">Our Story</h4>
+                        <p class="mt-4 text-lg text-gray-600">
+                            Founded in [Year, e.g., 2018] in the industrial heart of Kanpur, Uttar Pradesh, Purvi Roadlines started with a simple observation: the local logistics market was fragmented and inefficient. Businesses struggled to find reliable trucks, and truck owners wasted time and fuel looking for their next load.
+                        </p>
+                        <p class="mt-4 text-lg text-gray-600">
+                            We built this company from the ground up, forging one relationship at a time. We spent years on the ground, understanding the challenges of both shippers and transporters. This website is the next step in our evolution, bringing our on-the-ground experience to a digital platform to serve you better.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Mission, Vision & Strategy -->
+                <div class="mt-16 md:mt-24">
+                    <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                        <!-- Mission -->
+                        <div class="p-8 bg-gray-50 rounded-lg shadow-lg reveal-on-scroll">
+                            <h4 class="text-2xl font-bold text-blue-700">Our Mission in Kanpur</h4>
+                            <p class="mt-4 text-gray-600">
+                                To revolutionize logistics in Kanpur by providing a seamless, transparent, and technology-driven brokerage platform. We aim to empower local businesses and truck owners, making Kanpur a more efficient and profitable logistics hub.
+                            </p>
+                        </div>
+                        <!-- Vision -->
+                        <div class="p-8 bg-gray-50 rounded-lg shadow-lg reveal-on-scroll" style="animation-delay: 0.1s;">
+                            <h4 class="text-2xl font-bold text-orange-600">Our Vision</h4>
+                            <p class="mt-4 text-gray-600">
+                                To be Northern India's most trusted and sought-after logistics partner, expanding from our strong Kanpur roots to connect every city, town, and village across the nation with reliability and integrity.
+                            </p>
+                        </div>
+                        <!-- Strategy -->
+                        <div class="p-8 bg-gray-50 rounded-lg shadow-lg reveal-on-scroll" style="animation-delay: 0.2s;">
+                            <h4 class="text-2xl font-bold text-gray-900">How We Grab Attention</h4>
+                            <p class="mt-4 text-gray-600">
+                                <strong>For Truck Owners:</strong> We offer more than just loads. We offer partnership, guaranteed timely payments, timely balance payments, and technology that reduces empty miles.
+                            </p>
+                            <p class="mt-4 text-gray-600">
+                                <strong>For Freight Owners:</strong> We provide peace of mind. Our strict verification process, transparent pricing, and commitment to timeliness build the trust that expands our business.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 
+          ============================================================
+          SERVICES / DESTINATIONS PAGE SECTION (ID: #services)
+          ============================================================
+        -->
+        <section id="services" class="page-section py-16 md:py-24 bg-white">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center max-w-3xl mx-auto">
+                    <h2 class="text-base font-semibold text-blue-600 uppercase tracking-wide">Our Services & Reach</h2>
+                    <h3 class="mt-2 text-3xl md:text-5xl font-extrabold text-gray-900 tracking-tight">We Go The Distance. Literally.</h3>
+                    <p class="mt-4 text-xl text-gray-600">
+                        Whether you have a full truckload or need to find one, our services are designed to be flexible and comprehensive.
+                    </p>
+                </div>
+
+                <!-- Core Services -->
+                <div class="mt-16 md:mt-24 grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <div class="p-8 bg-gray-50 rounded-lg shadow-lg border-l-4 border-blue-600 reveal-on-scroll">
+                        <h4 class="text-2xl font-bold text-gray-900">Freight Booking (For Shippers)</h4>
+                        <p class="mt-4 text-gray-600">
+                            Have goods to move? We are your single point of contact. Tell us the what, where, and when, and we'll handle the rest.
+                        </p>
+                        <ul class="mt-4 list-disc list-inside space-y-2 text-gray-600">
+                            <li>Full Truckload (FTL)</li>
+                            <li>Part Truckload (PTL)</li>
+                            <li>Competitive, all-inclusive quotes</li>
+                            <li>Vetted and reliable transporters</li>
+                        </ul>
+                    </div>
+                    <div class="p-8 bg-gray-50 rounded-lg shadow-lg border-l-4 border-orange-500 reveal-on-scroll" style="animation-delay: 0.1s;">
+                        <h4 class="text-2xl font-bold text-gray-900">Load Finding (For Truck Owners)</h4>
+                        <p class="mt-4 text-gray-600">
+                            Keep your truck moving and earning. Partner with us to get consistent, high-quality loads from reputable businesses.
+                        </p>
+                        <ul class="mt-4 list-disc list-inside space-y-2 text-gray-600">
+                            <li>Access to exclusive loads</li>
+                            <li>Reduce empty miles and wait times</li>
+                            <li>Fair pricing and prompt payment</li>
+                            <li>Routes all across India</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Destinations -->
+                <div class="mt-16 md:mt-24 reveal-on-scroll">
+                    <div class="text-center">
+                        <h4 class="text-3xl font-extrabold text-gray-900">Our Nationwide Reach</h4>
+                        <p class="mt-4 max-w-2xl mx-auto text-lg text-gray-600">
+                            While we are based in Kanpur, our network is truly national. We offer reliable transport to and from all major Indian cities.
+                        </p>
+                    </div>
+
+                    <div class="mt-12 max-w-5xl mx-auto">
+                        <img src="https://placehold.co/1024x400/e0e7ff/1d4ed8?text=Connecting+All+Over+India" 
+                             alt="Map of India"
+                             class="w-full rounded-lg shadow-md mb-8">
+                        
+                        <h5 class="text-xl font-bold text-center text-gray-800">Serving Key Cities and Beyond:</h5>
+                        <div class="mt-6 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 text-center">
+                            <div class="p-4 bg-blue-50 rounded-lg">
+                                <span class="font-medium text-blue-800">Gurugram</span>
+                            </div>
+                            <div class="p-4 bg-blue-50 rounded-lg">
+                                <span class="font-medium text-blue-800">Noida</span>
+                            </div>
+                            <div class="p-4 bg-blue-50 rounded-lg">
+                                <span class="font-medium text-blue-800">Delhi</span>
+                            </div>
+                            <div class="p-4 bg-blue-50 rounded-lg">
+                                <span class="font-medium text-blue-800">Jaipur</span>
+                            </div>
+                            <div class="p-4 bg-blue-50 rounded-lg">
+                                <span class="font-medium text-blue-800">Udaipur</span>
+                            </div>
+                            <div class="p-4 bg-blue-50 rounded-lg">
+                                <span class="font-medium text-blue-800">Bikaner</span>
+                            </div>
+                            <div class="p-4 bg-blue-50 rounded-lg">
+                                <span class="font-medium text-blue-800">Jammu</span>
+                            </div>
+                            <div class="p-4 bg-blue-50 rounded-lg">
+                                <span class="font-medium text-blue-800">Guwahati</span>
+                            </div>
+                        </div>
+                        <p class="mt-6 text-center text-lg font-semibold text-gray-700">
+                            ...and anywhere else your freight needs to go. If there's a road, we'll take it!
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 
+          ============================================================
+          CONTACT PAGE SECTION (ID: #contact)
+          ============================================================
+        -->
+        <section id="contact" class="page-section py-16 md:py-24 bg-gray-100">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center max-w-3xl mx-auto">
+                    <h2 class="text-base font-semibold text-blue-600 uppercase tracking-wide">Get in Touch</h2>
+                    <h3 class="mt-2 text-3xl md:text-5xl font-extrabold text-gray-900 tracking-tight">Let's Get Moving.</h3>
+                    <p class="mt-4 text-xl text-gray-600">
+                        Fill out the form below for a free, no-obligation quote, or to partner with us. Our team will contact you immediately.
+                    </p>
+                </div>
+
+                <div class="mt-16 md:mt-20 max-w-4xl mx-auto">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                        <!-- Contact Form -->
+                        <div class="bg-white p-8 rounded-lg shadow-lg">
+                            <h4 class="text-2xl font-bold text-gray-900 mb-6">Request a Quote or Partnership</h4>
+                            
+                                                                        <!--
+                                                                            This form used to open the user's email client (mailto:). Instead
+                                                                            we now POST the form to a server endpoint `/send-email` which will
+                                                                            send the email for you (no redirect to client email apps).
+                                                                            Run the Node server included with this project and set SMTP env vars.
+                                                                        -->
+                                                                        <form id="contact-form">
+                                <div class="space-y-5">
+                                    <div>
+                                        <label for="name" class="block text-sm font-medium text-gray-700">Full Name</label>
+                                        <input type="text" id="name" name="name" required
+                                               class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500">
+                                    </div>
+                                    <div>
+                                        <label for="email" class="block text-sm font-medium text-gray-700">Email Address</label>
+                                        <input type="email" id="email" name="email" required
+                                               class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500">
+                                    </div>
+                                    <div>
+                                        <label for="phone" class="block text-sm font-medium text-gray-700">Phone Number</label>
+                                        <input type="tel" id="phone" name="phone" required
+                                               class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500">
+                                    </div>
+                                    <div>
+                                        <label class="block text-sm font-medium text-gray-700">I am a...</label>
+                                        <div class="mt-2 space-y-2">
+                                            <div class="flex items-center">
+                                                <input id="user-type-freight" name="user-type" type="radio" value="Freight Owner (Need a Truck)" class="h-4 w-4 text-blue-600 border-gray-300 focus:ring-blue-500">
+                                                <label for="user-type-freight" class="ml-3 block text-sm text-gray-700">Freight Owner (Need a Truck)</label>
+                                            </div>
+                                            <div class="flex items-center">
+                                                <input id="user-type-truck" name="user-type" type="radio" value="Truck Owner (Looking for Loads)" class="h-4 w-4 text-blue-600 border-gray-300 focus:ring-blue-500">
+                                                <label for="user-type-truck" class="ml-3 block text-sm text-gray-700">Truck Owner (Looking for Loads)</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <label for="message" class="block text-sm font-medium text-gray-700">Message / Load Details</label>
+                                        <textarea id="message" name="message" rows="4" required
+                                                  class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500"
+                                                  placeholder="e.g., 'Need 10-wheel truck for 15 tons from Kanpur to Delhi.'"></textarea>
+                                    </div>
+                                    <div>
+                                        <button type="submit"
+                                                class="w-full inline-flex justify-center py-3 px-6 border border-transparent shadow-sm text-base font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition duration-300">
+                                            Send Request
+                                        </button>
+                                    </div>
+                                </div>
+                            </form>
+                            <!-- Success Message (hidden by default) -->
+                            <div id="form-success-message" class="hidden mt-6 p-4 bg-green-100 border border-green-300 text-green-800 rounded-md">
+                                Thanks! Your request has been prepared. Please check your email client to send it. We'll get back to you soon!
+                            </div>
+                        </div>
+
+                        <!-- Contact Details -->
+                        <div class="space-y-6">
+                            <div class="bg-white p-8 rounded-lg shadow-lg">
+                                <h4 class="text-2xl font-bold text-gray-900">Direct Contact</h4>
+                                <p class="mt-3 text-gray-600">You can also reach us directly through phone or email. We are available 24/7 for your logistics needs.</p>
+                                <div class="mt-6 space-y-4">
+                                    <div class="flex items-start">
+                                        <div class="flex-shrink-0 h-10 w-10 rounded-md bg-blue-100 text-blue-700 flex items-center justify-center">
+                                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path></svg>
+                                        </div>
+                                        <div class="ml-4">
+                                            <h5 class="text-lg font-medium text-gray-900">Call Us</h5>
+                                            <a href="tel:+916394481309" class="text-blue-600 hover:underline">+91-6394481309</a>
+                                        </div>
+                                    </div>
+                                    <div class="flex items-start">
+                                        <div class="flex-shrink-0 h-10 w-10 rounded-md bg-blue-100 text-blue-700 flex items-center justify-center">
+                                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
+                                        </div>
+                                        <div class="ml-4">
+                                            <h5 class="text-lg font-medium text-gray-900">Email Us</h5>
+                                            <a href="mailto:purviroadlines2018@gmail.com" class="text-blue-600 hover:underline">purviroadlines2018@gmail.com</a>
+                                        </div>
+                                    </div>
+                                    <div class="flex items-start">
+                                        <div class="flex-shrink-0 h-10 w-10 rounded-md bg-blue-100 text-blue-700 flex items-center justify-center">
+                                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
+                                        </div>
+                                        <div class="ml-4">
+                                            <h5 class="text-lg font-medium text-gray-900">Our Office</h5>
+                                            <p class="text-gray-600">ISPAT NAGAR<br>Kanpur, Uttar Pradesh, India</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- 
+      FOOTER
+    -->
+    <footer class="bg-gray-800 text-gray-400">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-12">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div>
+                    <a href="#home" class="nav-link text-2xl font-bold text-white">
+                        Purvi <span class="text-orange-400">Roadlines</span>
+                    </a>
+                    <p class="mt-2 text-sm">Built with ❤️ in Kanpur. Connecting India.</p>
+                </div>
+                <div class="flex space-x-6 mt-4 md:mt-0">
+                    <!-- Social Links (placeholders) -->
+                    <a href="#" class="hover:text-white transition duration-300">
+                        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2.04c-5.5 0-10 4.49-10 10.02 0 5.52 4.5 10.02 10 10.02 5.5 0 10-4.5 10-10.02 0-5.53-4.5-10.02-10-10.02zm0 18.02c-4.41 0-8-3.59-8-8.02 0-4.42 3.59-8.02 8-8.02 4.41 0 8 3.6 8 8.02 0 4.43-3.59 8.02-8 8.02z"></path></svg>
+                    </a>
+                    <a href="#" class="hover:text-white transition duration-300">
+                        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2.04c-5.5 0-10 4.49-10 10.02 0 5.52 4.5 10.02 10 10.02 5.5 0 10-4.5 10-10.02 0-5.53-4.5-10.02-10-10.02zm0 18.02c-4.41 0-8-3.59-8-8.02 0-4.42 3.59-8.02 8-8.02 4.41 0 8 3.6 8 8.02 0 4.43-3.59 8.02-8 8.02z"></path></svg>
+                    </a>
+                </div>
+            </div>
+            <div class="mt-8 border-t border-gray-700 pt-8 text-center text-sm">
+                <p>&copy; 2024 Purvi Roadlines. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+
+    <!-- 
+      ============================================================
+      JAVASCRIPT
+      Handles page navigation, mobile menu, form submission, and animations.
+      ============================================================
+    -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            
+            // --- Page Navigation System ---
+            const navLinks = document.querySelectorAll('.nav-link');
+            const mobileNavLinks = document.querySelectorAll('.nav-link-mobile');
+            const mobileMenu = document.getElementById('mobile-menu');
+            const sections = document.querySelectorAll('.page-section');
+
+            function showPage(pageId) {
+                // Hide all sections
+                sections.forEach(section => {
+                    section.classList.remove('active');
+                });
+
+                // Show the target section
+                const targetSection = document.querySelector(pageId);
+                if (targetSection) {
+                    targetSection.classList.add('active');
+                }
+                
+                // Scroll to top of the new "page"
+                window.scrollTo(0, 0);
+            }
+
+            // Add click listeners for desktop nav links
+            navLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault(); // Stop anchor link behavior
+                    const pageId = this.getAttribute('href');
+                    showPage(pageId);
+                });
+            });
+
+            // --- Mobile Menu Toggle ---
+            const mobileMenuButton = document.getElementById('mobile-menu-button');
+            mobileMenuButton.addEventListener('click', function() {
+                mobileMenu.classList.toggle('hidden');
+            });
+            
+            // Add click listeners for mobile nav links
+            mobileNavLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault(); // Stop anchor link behavior
+                    const pageId = this.getAttribute('href');
+                    showPage(pageId);
+                    // Hide the menu after clicking
+                    mobileMenu.classList.add('hidden');
+                });
+            });
+
+            // NOTE: Desktop nav links work automatically with the <html> class "scroll-smooth"
+            // and their href="#section-id" attributes. No JS is needed for them.
+
+            // --- Contact Form Handling (send to server) ---
+            const contactForm = document.getElementById('contact-form');
+            const successMessage = document.getElementById('form-success-message');
+
+            // Create an element to show error messages
+            let errorMessage = document.getElementById('form-error-message');
+            if (!errorMessage) {
+                errorMessage = document.createElement('div');
+                errorMessage.id = 'form-error-message';
+                errorMessage.className = 'hidden mt-6 p-4 bg-red-100 border border-red-300 text-red-800 rounded-md';
+                contactForm.insertAdjacentElement('afterend', errorMessage);
+            }
+
+            contactForm.addEventListener('submit', async function(e) {
+                e.preventDefault(); // Stop the form from submitting normally
+
+                // Get form data
+                const name = document.getElementById('name').value;
+                const email = document.getElementById('email').value;
+                const phone = document.getElementById('phone').value;
+                const userType = document.querySelector('input[name="user-type"]:checked')?.value || 'Not specified';
+                const message = document.getElementById('message').value;
+                // POST the form to the server endpoint which will deliver the email
+                // (server must be running and configured with SMTP credentials)
+                try {
+                    const res = await fetch('/send-email', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({ name, email, phone, userType, message })
+                    });
+
+                    if (res.ok) {
+                        successMessage.textContent = 'Thanks — your request was sent. We will contact you soon.';
+                        successMessage.classList.remove('hidden');
+                        errorMessage.classList.add('hidden');
+                        contactForm.reset();
+                    } else {
+                        const err = await res.json().catch(() => ({}));
+                        errorMessage.textContent = err.error || 'Failed to send message. Please try again later.';
+                        errorMessage.classList.remove('hidden');
+                        successMessage.classList.add('hidden');
+                    }
+                } catch (ex) {
+                    errorMessage.textContent = 'Network error — could not send form. Make sure the server is running.';
+                    errorMessage.classList.remove('hidden');
+                    successMessage.classList.add('hidden');
+                }
+            });
+            
+            // --- Scroll-triggered Animations ---
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, {
+                threshold: 0.1 // Trigger when 10% of the element is visible
+            });
+
+            // Observe all elements with the 'reveal-on-scroll' class
+            document.querySelectorAll('.reveal-on-scroll').forEach(element => {
+                observer.observe(element);
+            });
+
+        });
+    </script>
+
+</body>
+</html>

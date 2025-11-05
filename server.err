@@ -1,0 +1,16 @@
+Error sending mail: Error: getaddrinfo ENOTFOUND smtp.example.com
+    at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:122:26) {
+  errno: -3008,
+  code: 'EDNS',
+  syscall: 'getaddrinfo',
+  hostname: 'smtp.example.com',
+  command: 'CONN'
+}
+Error sending mail: Error: getaddrinfo ENOTFOUND smtp.example.com
+    at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:122:26) {
+  errno: -3008,
+  code: 'EDNS',
+  syscall: 'getaddrinfo',
+  hostname: 'smtp.example.com',
+  command: 'CONN'
+}
